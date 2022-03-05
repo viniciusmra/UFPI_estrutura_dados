@@ -3,6 +3,7 @@ package ap04;
 public class ListaEncadeada {
     private Node inicio = null;
     
+    // Método para adicionar nome ao início
     public void addNomeInicio(String nome){
 		Node novo = new Node(nome);
 
@@ -17,22 +18,27 @@ public class ListaEncadeada {
             System.out.println("Nome ja existente.");
 		}
     }
+
+    // Método para adicionar nome ao final
     public void addNomeFinal(String nome){
 		Node novo = new Node(nome); 
-        if (verificar(nome) == false) {
-            Node aux=inicio;
-            while(true){ // para quando o prox elemento do nó for null
-                if(aux.getProx() == null){
-                    break;
+        if (verificar(nome) == false) { // Verifica se o nome ja existe
+            if(inicio != null){ // Verifica se a lista ja tem algum elemento
+                Node aux = inicio;
+                // While que percorre todos os elementos na lista até que aux seja o último
+                while(aux.getProx() != null){ 
+                    aux = aux.getProx();
                 }
-                 aux = aux.getProx(); // aux é o ultimo elemento
+                aux.setProx(novo); // o ultimo elemento vai apontar para o novo elemento
+            } else{ // Se a lista não tem nenhum elemento, o elemento novo é adiciona ao início
+                inicio = novo;
             }
-            aux.setProx(novo); // o ultimo elemento vai apontar para o novo elemento
 		} else { 
             System.out.println("Nome ja existente.");
 		}
     }
     
+    // Método que marca elemento excluído como "não-excluído"
     public void recuperarNome(String nome){
         Node aux = pesquisar(nome);
         if(aux != null){
@@ -40,6 +46,7 @@ public class ListaEncadeada {
         }
     }
     
+    // Método para marcar elemento como excluído
     public void removerNome(String nome){
         Node aux = pesquisar(nome); 
         if(aux !=null){
@@ -48,6 +55,7 @@ public class ListaEncadeada {
         }
     }
     
+    // Método que verifica que o nome ja está na lista
     public boolean verificar(String nome){
         Node aux = inicio;
         while(aux != null){
@@ -59,6 +67,7 @@ public class ListaEncadeada {
         return false;
     }
     
+    // Método que pesquisa e retorna um nome
     public Node pesquisar(String nome){
         Node aux = inicio;
         while(aux != null){
@@ -70,6 +79,7 @@ public class ListaEncadeada {
         return null;
     }
 
+    // Método que mostra todos os nomes
     public void mostrarTodos(){
         Node aux = inicio;
         while(aux != null){

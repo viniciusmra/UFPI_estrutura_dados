@@ -3,11 +3,12 @@ package ap04;
 public class Node {
     private String nome;
 	private Node prox;
-    private boolean excluido;
+    private boolean excluido; // atributo que diz se o elemento foi excluído ou não
 		
 		public Node(String nome) {
 			this.nome = nome;
 			this.prox = null;
+            this.excluido = false;
 		}
 
         public String getNome(){
