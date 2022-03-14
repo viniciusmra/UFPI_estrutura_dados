@@ -1,83 +1,107 @@
-/*
-Na aplicação cliente, você deve criar um menu com opções para: 
-i) chegada de pessoa para atendimento normal; 
-ii) chegada de pessoa para atendimento prioritário; 
-iii) atendimento de uma pessoa (todas as pessoas com prioridade devem ser atendidas 
-antes de pessoas normais ou pode ser implementada outra política por exemplo: cinco 
-normais e um prioridade); 
-iv) listar todas as pessoas da fila; e 
-v) gerar estatísticas parciais sobre o atendimento em um determinado período da empresa: 
-%atendimentoPrioritário, %atendimentoNormal e tamanho das filas 
-*/ 
-import java.util.Scanner;
-public class UsoFila{
-    public static void main(String[] args) {
-        FilaPrioridade fila = new FilaPrioridade();
-        Scanner teclado = new Scanner(System.in);
-        int opcao;
-        String nome;
-        boolean flag = false;
+public class FilaPrioridade {
+    private Node inicio = null;
+    private Node fim = null;
+    private double total_atindidos=0, prio_atendidos=0, normal_atendidos=0;
+    private int senhaP = 0, senhaN = 0;
+    private int tam=0;
 
-        while(true){
-            System.out.println("=-=-=-=-=-=-==-=-=-=-=-=-==-=-=-=-=-=-=");
-            System.out.println("[0] Inserir Pessoa na da fila [sem prioridades]");
-            System.out.println("[1] Inserir Pessoa na fila [com prioridades]");
-            System.out.println("[2] Atendimento");
-            System.out.println("[3] Listar Todos os Nomes da Fila");
-            System.out.println("[4] Estatisticas");
-            System.out.println("[5] Sair");
-            System.out.println("=-=-=-=-=-=-==-=-=-=-=-=-==-=-=-=-=-=-=");
-            System.out.println("Informe uma opcao:");
-            
-            opcao = teclado.nextInt();
-            teclado.nextLine();
-            switch (opcao) {
-                case 0:
-                    System.out.println("Informe seu nome: (Sem prioridade)");
-                    nome = teclado.nextLine();
-                    fila.inserir(nome, false);
+    // Adiciona uma pessoa no final da lista
+    public void inserir(String nome, boolean prioridade){
+        Node novo = new Node(nome, prioridade);
+        if(prioridade){
+            senhaP--;
+            novo.setSenha(senhaP);
+        }else{
+            senhaN++;
+            novo.setSenha(senhaN);
+        }
+
+        if(inicio == null && fim == null){
+            inicio = novo;
+            fim = novo;
+        }else{
+            fim.setProx(novo);
+            fim = novo;
+        }
+        tam++;
+
+    }
+
+    // Retorna o próximo atendimento prioritário da lista
+    public void chamarPrioritario(){
+        Node aux = inicio;
+        boolean flag = false;
+        if(aux != null){
+            do{
+                if((aux.getPrioridade()) && (!aux.getExcluido())){
+                    aux.setExcluido(true);
+                    prio_atendidos++;
+                    System.out.println("Paciente: " + aux.getNome() + " | Senha: P" + aux.getSenha()*(-1));
+                    flag = true;
                     break;
-                case 1:
-                    System.out.println("Informe seu nome: (Com prioridade)");
-                    nome = teclado.nextLine();
-                    fila.inserir(nome, true);
-                    break;
-                case 2:
-                    fila.chamarPrioritario();
-                    break;
-                case 3:
-                    if(fila.Tam()>0){
-                        fila.mostrarTodos();
-                    }else{
-                        System.out.println("Nao ha pessoas a serem atendidios.");
-                    }
-                    
-                    break;
-                case 4:
-                    System.out.println("Total de atendimentos: " + fila.totalAtendidos());
-                    if(fila.totalAtendidos() > 0){
-                        System.out.println(fila.normalAtendidos()+"% dos atendimentos foram sem prioridades");
-                        System.out.println(fila.prioAtendidos()+"% dos atendimentos foram com prioridades");
-                    }
-                    
-                    break;
-                case 5:
-                    if(fila.totalAtendidos() == fila.Tam()){
-                        flag = true;
-                        System.out.println("Atendimentos conluidos");
-                    }else{
-                       System.out.println("O atendimento nao foi conluido");
-                    }
-                    break;
-                default:
-                    System.out.println("Informe uma opcao:");
-                    opcao = teclado.nextInt();
-                    break;
-            }
-            if(flag){
-                break;
+                }
+                aux = aux.getProx();
+            }while(aux != null);
+            // Se chegar aqui, não tem prioridades, então é chamada um atendimento normal
+            if(!flag){
+                chamarNormal();
             }
         }
-        teclado.close();
+    }
+
+    // Retorna o próximo atendimento normal da lista
+    public void chamarNormal(){
+        Node aux = inicio;
+        boolean flag = false;
+        if(aux != null){
+            do{
+                if((!aux.getPrioridade()) && (!aux.getExcluido())){
+                    aux.setExcluido(true);
+                    normal_atendidos++;
+                    System.out.println("Paciente: " + aux.getNome() + " | Senha: N" + aux.getSenha());
+                    flag = true;
+                    break;
+                }
+                aux = aux.getProx();
+            }while(aux != null);
+            // Se chegar aqui, não tem atendimento normal, então é chamada um atendimento prioritário
+            if(!flag){
+                System.out.println("Todos os pacientes foram atendidos");
+            }
+        }
+          
+    }
+    
+    public void mostrarTodos(){
+        Node aux = inicio;
+        while(aux != null){
+            if(!aux.getExcluido()){
+                if(aux.getSenha() < 0){
+                    System.out.println("Paciente: " + aux.getNome() + " | Senha: P" + aux.getSenha()*(-1));
+                }else{
+                    System.out.println("Paciente: " + aux.getNome() + " | Senha: N" + aux.getSenha());
+                }
+            }
+            aux = aux.getProx();
+        }
+    }
+
+    public double totalAtendidos(){
+        total_atindidos = prio_atendidos + normal_atendidos;
+        return total_atindidos;
+    }
+    
+    public double prioAtendidos(){
+        double porcentagem = (prio_atendidos/total_atindidos)*100;
+        return porcentagem ;
+    }
+
+    public double normalAtendidos(){
+        double porcentagem = (normal_atendidos/total_atindidos) * 100;
+        return porcentagem;
+    }
+
+    public int Tam(){
+            return tam;
     }
 }
