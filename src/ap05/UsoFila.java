@@ -8,6 +8,11 @@ normais e um prioridade);
 iv) listar todas as pessoas da fila; e 
 v) gerar estatísticas parciais sobre o atendimento em um determinado período da empresa: 
 %atendimentoPrioritário, %atendimentoNormal e tamanho das filas 
+
+** TO DO:
+    (vini)    
+    revisar os comentários que eu fiz (alterei algumas coisas e n alterei os comentários) 
+    revisar o nome de alguns métodos de get e set
 */ 
 import java.util.Scanner;
 public class UsoFila{
@@ -48,11 +53,24 @@ public class UsoFila{
                     break;
 
                 case 2:
-                    fila.chamarPrioritario();
+                    String msg = fila.chamarPrioritario();
+                    if(msg != null){
+                        System.out.println(msg); 
+                    } else{
+                        System.out.println("A fila esta vazia");
+                    }
                     break;
 
                 case 3:
-                    fila.mostrarTodos();
+                    String[] pacientes = new String[fila.getTam() - fila.totalAtendidos()];
+                    pacientes = fila.mostrarTodos();
+                    if(pacientes.length > 0){
+                        for(int i = 0; i < fila.getTam() - fila.totalAtendidos(); i++){
+                            System.out.println(pacientes[i]);
+                        }
+                    }else{
+                        System.out.println("A fila esta vazia");
+                    }
                     break;
 
                 case 4:
