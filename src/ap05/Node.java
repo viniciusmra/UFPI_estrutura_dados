@@ -4,6 +4,7 @@ public class Node {
     private int senha;
     private boolean prioridade;
     private boolean excluido;
+    private int ordem;
 		
     public Node(String nome, boolean prioridade) {
         this.nome = nome;
@@ -46,5 +47,13 @@ public class Node {
 
     public void setSenha(int senha){
         this.senha= senha;
+    }
+
+    public void setOrdem(int ordem){
+        this.ordem = ordem;
+    }
+    
+    public int getOrdem(){
+        return ordem;
     }
 }

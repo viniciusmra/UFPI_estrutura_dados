@@ -4,6 +4,7 @@ public class FilaPrioridade {
     private int total_atendidos = 0, prio_atendidos = 0, normal_atendidos = 0;
     private int senhaP = 0, senhaN = 0;
     private int tam = 0;
+    private int ordem = 0;
 
     // Adiciona uma pessoa no final da lista e atribui um senha
     // as senhas contendo números negativos são para atendimentos prioritários
@@ -38,6 +39,7 @@ public class FilaPrioridade {
                 if((aux.getPrioridade()) && (!aux.getExcluido())){ // Checa se o nome foi cadastrado como atendimento prioritário e se ele não está marcado como excluido
                     aux.setExcluido(true); // Marca o nome como excluído, informando que ele ja foi atendido
                     prio_atendidos++; // Incrementa a variável que registra os atendimentos prioritários
+                    aux.setOrdem(ordem++);
                     return "Paciente: " + aux.getNome() + " | Senha: P" + aux.getSenha()*(-1);
                 }
                 aux = aux.getProx();
@@ -45,12 +47,12 @@ public class FilaPrioridade {
             
         }
         // Se chegar aqui, não tem prioridades, então é chamada um atendimento normal
-            return chamarNormal();
+        return chamarNormal();
 
    
     }
 
-    // Retorna o próximo atendimento normal da lista
+    // Retorna o próximo atendimento normal da lista, analogamente ao método anterior
     public String chamarNormal(){
         Node aux = inicio;
         if(aux != null){
@@ -58,54 +60,73 @@ public class FilaPrioridade {
                 if((!aux.getPrioridade()) && (!aux.getExcluido())){
                     aux.setExcluido(true);
                     normal_atendidos++;
+                    aux.setOrdem(ordem++);
                     return "Paciente: " + aux.getNome() + " | Senha: N" + aux.getSenha();
                 }
                 aux = aux.getProx();
             }while(aux != null);
 
         }
-        // Se chegar aqui, não tem mais atendimentos, então é exibida uma mensagem 
+        // Se chegar aqui, não tem mais atendimentos, então é retornado null
         return null;
 
     }
     
-    // Mostra todos os pacientes na fila que não tenha sido atendido ainda
+    // Método que retorna um vetor de strings contendo todos os pacientes
     public String[] mostrarTodos(){
         Node aux = inicio;
-        boolean flag = false;
         int contador = 0;
-        String[] pacientes = new String[tam - total_atendidos];
+        String[] pacientes = new String[tam - total_atendidos]; // Cria um array de string com tamanho igual aos pacientes que ainda não foram atendidos
         while(aux != null){
-            if(!aux.getExcluido()){
-                flag = true;
-                if(aux.getSenha() < 0){
-                    pacientes[contador++] = "Paciente: " + aux.getNome() + " | Senha: P" + aux.getSenha()*(-1);
-                    //System.out.println("Paciente: " + aux.getNome() + " | Senha: P" + aux.getSenha()*(-1));
+            if(!aux.getExcluido()){ // Verifica se o paciente ainda não foi atendido
+                if(aux.getSenha() < 0){ // Verifica se o paciente é prioritário ou não (senhas negativas são prioritárias)
+                    pacientes[contador++] = "Paciente: " + aux.getNome() + " | Senha: P" + aux.getSenha()*(-1); // atendimento prioritário
                 }else{
-                    pacientes[contador++] = "Paciente: " + aux.getNome() + " | Senha: N" + aux.getSenha();
-                    //System.out.println("Paciente: " + aux.getNome() + " | Senha: N" + aux.getSenha());
+                    pacientes[contador++] = "Paciente: " + aux.getNome() + " | Senha: N" + aux.getSenha(); // atendimento prioritário
                 }
             }
             aux = aux.getProx();
         }
-        return pacientes;
+        return pacientes; // retorna o array
+    }
+    
+    // Metodo que retorna um vetor de strings com o historico de todos os pacientes atendidos
+    public String[] mostrarHistorico(){
+        int contador = 0; 
+        String[] pacientes = new String[total_atendidos]; // Cria uma string com o tamanho igual aos pacientes que foram atendidos 
+        for(int i = 0; i < total_atendidos; i++){ 
+            Node aux = inicio;
+            while(aux != null){
+                if(aux.getExcluido() && aux.getOrdem() == i){ // Verifica se o paciente ja foi atendido (excluido) e se a ordem do paciente equivale ao procurado
+                    if(aux.getSenha() < 0){ // Verifica se o paciente é prioritário ou não (senhas negativas são prioritárias)
+                        pacientes[contador++] = (i+1) + " - Paciente: " + aux.getNome() + " | Senha: P" + aux.getSenha()*(-1);
+                        break;
+                    }else{
+                        pacientes[contador++] = (i+1) + " - Paciente: " + aux.getNome() + " | Senha: N" + aux.getSenha();
+                        break;
+                    }
+                }
+                aux = aux.getProx();
+            }
+        }
+        return pacientes; // retorna o array
     }
 
     // Retorna o total de pacientes atendidos
-    public int totalAtendidos(){
+    public int getTotalAtendidos(){
         total_atendidos = prio_atendidos + normal_atendidos;
         return total_atendidos;
     }
     
     // Retorna o porcentagem de atendimentos prioritários
-    public double prioAtendidos(){
-        double porcentagem = (prio_atendidos/total_atendidos)*100;
+    public double getPorcentPrioridade(){
+        double porcentagem = (prio_atendidos/(double)total_atendidos)*100;
         return porcentagem ;
     }
 
     // Retorna a porcentagem de atendimentos normais
-    public double normalAtendidos(){
-        double porcentagem = (normal_atendidos/total_atendidos) * 100;
+    public double getPorcentNormal(){
+        double porcentagem = (normal_atendidos/(double)total_atendidos) * 100;
         return porcentagem;
     }
 

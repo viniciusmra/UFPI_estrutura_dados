@@ -9,11 +9,6 @@ iv) listar todas as pessoas da fila; e
 v) gerar estatísticas parciais sobre o atendimento em um determinado período da empresa: 
 %atendimentoPrioritário, %atendimentoNormal e tamanho das filas 
 
-** TO DO:
-    (vini)    
-    revisar os comentários que eu fiz (alterei algumas coisas e n alterei os comentários) 
-    revisar o nome de alguns métodos de get e set
-    //pedro passou por aqui
 */ 
 import java.util.Scanner;
 public class UsoFila{
@@ -34,8 +29,7 @@ public class UsoFila{
             System.out.println("[5] Sair");
             System.out.println("=-=-=-=-=-=-==-=-=-=-=-=-==-=-=-=-=-=-=");
             System.out.println("Informe uma opcao:");
-            System.out.print("> ");
-            
+            System.out.print("> ");       
             opcao = teclado.nextInt();
             teclado.nextLine();
             switch (opcao) {
@@ -63,10 +57,10 @@ public class UsoFila{
                     break;
 
                 case 3:
-                    String[] pacientes = new String[fila.getTam() - fila.totalAtendidos()];
+                    String[] pacientes = new String[fila.getTam() - fila.getTotalAtendidos()];
                     pacientes = fila.mostrarTodos();
                     if(pacientes.length > 0){
-                        for(int i = 0; i < fila.getTam() - fila.totalAtendidos(); i++){
+                        for(int i = 0; i < fila.getTam() - fila.getTotalAtendidos(); i++){
                             System.out.println(pacientes[i]);
                         }
                     }else{
@@ -75,25 +69,40 @@ public class UsoFila{
                     break;
 
                 case 4:
-                    System.out.println("Total de pacientes na fila: " + (fila.getTam() - fila.totalAtendidos()));
-                    System.out.println("Total de atendimentos: " + fila.totalAtendidos());
-                    if(fila.totalAtendidos() > 0){
-                        System.out.println(" |- " + fila.normalAtendidos() + "% dos atendimentos foram sem prioridades");
-                        System.out.println(" |- " + fila.prioAtendidos() + "% dos atendimentos foram com prioridades");
+                    System.out.println("Total de pacientes na fila: " + (fila.getTam() - fila.getTotalAtendidos()));
+                    System.out.println("Total de atendimentos: " + fila.getTotalAtendidos());
+                    if(fila.getTotalAtendidos() > 0){
+                        System.out.println(" |- " +  fila.getPorcentNormal() + "% dos atendimentos foram sem prioridades");
+                        System.out.println(" |- " + fila.getPorcentPrioridade() + "% dos atendimentos foram com prioridades");
                     }
                     break;
 
                 case 5:
-                    if(fila.totalAtendidos() == fila.getTam()){
+                    if(fila.getTotalAtendidos() == fila.getTam()){ // Verifica se total 
                         flag = false;
-                        System.out.println("Atendimentos conluidos");
-                        System.out.println("Total de atendimentos: " + fila.totalAtendidos());
-                        if(fila.totalAtendidos() > 0){
-                            System.out.println(" |- " + fila.normalAtendidos() + "% dos atendimentos foram sem prioridades");
-                            System.out.println(" |- " + fila.prioAtendidos() + "% dos atendimentos foram com prioridades");
+                        System.out.println("Atendimentos concluidos");
+                        System.out.println("Total de atendimentos: " + fila.getTotalAtendidos());
+                        if(fila.getTotalAtendidos() > 0){
+                            System.out.println(" |- " + fila.getPorcentPrioridade() + "% dos atendimentos foram sem prioridades");
+                            System.out.println(" |- " + fila.getPorcentNormal() + "% dos atendimentos foram com prioridades");
                         }
+                        
+                        // Mostra o histórico de atendimentos
+                        System.out.println("=-=-=-=-=-=-==-=-=-=-=-=-==-=-=-=-=-=-=");
+                        System.out.println("=-=-=-=-Historico de Atendimentos-=-=-=");
+
+                        String[] historico = new String[fila.getTotalAtendidos()];
+                        historico = fila.mostrarHistorico();
+                        if(historico.length > 0){
+                            for(int i = 0; i < fila.getTotalAtendidos(); i++){
+                                System.out.println(historico[i]);
+                            }
+                        }else{
+                            System.out.println("O historico esta vazio");
+                        }
+                        
                     }else{
-                       System.out.println("O atendimento nao foi conluido, restam " + ((fila.getTam() - fila.totalAtendidos())) + " paciente(s) na fila");
+                       System.out.println("O atendimento nao foi conluido, restam " + ((fila.getTam() - fila.getTotalAtendidos())) + " paciente(s) na fila");
                     }
                     break;
 
