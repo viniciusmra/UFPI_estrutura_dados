@@ -13,6 +13,7 @@ v) gerar estatísticas parciais sobre o atendimento em um determinado período d
     (vini)    
     revisar os comentários que eu fiz (alterei algumas coisas e n alterei os comentários) 
     revisar o nome de alguns métodos de get e set
+    //pedro passou por aqui
 */ 
 import java.util.Scanner;
 public class UsoFila{
