@@ -1,7 +1,10 @@
+package ap05;
+
 public class FilaPrioridade {
     private Node inicio = null;
     private Node fim = null;
     private int total_atendidos = 0, prio_atendidos = 0, normal_atendidos = 0;
+    private int prio_nao_atendidos = 0, normal_nao_atendidos = 0;
     private int senhaP = 0, senhaN = 0;
     private int tam = 0;
     private int ordem = 0;
@@ -14,9 +17,11 @@ public class FilaPrioridade {
         if(prioridade){
             senhaP--;
             novo.setSenha(senhaP);
+            prio_nao_atendidos++;
         }else{
             senhaN++;
             novo.setSenha(senhaN);
+            normal_nao_atendidos++;
         }
 
         if(inicio == null && fim == null){
@@ -119,14 +124,26 @@ public class FilaPrioridade {
     }
     
     // Retorna o porcentagem de atendimentos prioritários
-    public double getPorcentPrioridade(){
+    public double getPorcentPrioridadeAtendidos(){
         double porcentagem = (prio_atendidos/(double)total_atendidos)*100;
         return porcentagem ;
     }
 
+    // Retorna a porcentagem de pacientes nao atendidos na fila com prioridade
+    public double getPorcentPrioridadeNaoAtendidos(){
+        double porcentagem = (prio_nao_atendidos - prio_atendidos)/(double)(tam - total_atendidos)*100;
+        return porcentagem ;
+    }
+
     // Retorna a porcentagem de atendimentos normais
-    public double getPorcentNormal(){
+    public double getPorcentNormalAtendidos(){
         double porcentagem = (normal_atendidos/(double)total_atendidos) * 100;
+        return porcentagem;
+    }
+
+    // Retorna a porcentagem de pacientes nao atendidos na fila normal
+    public double getPorcentNormalNaoAtendidos(){
+        double porcentagem = (normal_nao_atendidos - normal_atendidos)/(double)(tam - total_atendidos) * 100;
         return porcentagem;
     }
 

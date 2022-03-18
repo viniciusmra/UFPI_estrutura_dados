@@ -1,3 +1,4 @@
+package ap05;
 public class Node {
     private String nome;
 	private Node prox;

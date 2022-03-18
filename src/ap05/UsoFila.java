@@ -1,3 +1,4 @@
+package ap05;
 /*
 Na aplicação cliente, você deve criar um menu com opções para: 
 i) chegada de pessoa para atendimento normal; 
@@ -11,6 +12,7 @@ v) gerar estatísticas parciais sobre o atendimento em um determinado período d
 
 */ 
 import java.util.Scanner;
+import java.util.*;
 public class UsoFila{
     public static void main(String[] args) {
         FilaPrioridade fila = new FilaPrioridade();
@@ -70,10 +72,19 @@ public class UsoFila{
 
                 case 4:
                     System.out.println("Total de pacientes na fila: " + (fila.getTam() - fila.getTotalAtendidos()));
+                    if(fila.getTam() - fila.getTotalAtendidos() > 0){
+                        //System.out.println(" |- " +  fila.getPorcentNormalNaoAtendidos()+ "% dos atendimentos foram sem prioridades");
+                        System.out.printf(" |- %.2f %% dos pacientes nao possuem prioridade\n", fila.getPorcentNormalNaoAtendidos());
+                        //System.out.println(" |- " + fila.getPorcentPrioridadeNaoAtendidos() + "% dos atendimentos foram com prioridades");
+                        System.out.printf(" |- %.2f %% dos pacientes possuem prioridade\n", fila.getPorcentPrioridadeNaoAtendidos()); 
+                        System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+                    }
                     System.out.println("Total de atendimentos: " + fila.getTotalAtendidos());
                     if(fila.getTotalAtendidos() > 0){
-                        System.out.println(" |- " +  fila.getPorcentNormal() + "% dos atendimentos foram sem prioridades");
-                        System.out.println(" |- " + fila.getPorcentPrioridade() + "% dos atendimentos foram com prioridades");
+                        //System.out.println(" |- " +  fila.getPorcentNormalAtendidos() + "% dos atendimentos foram sem prioridades");
+                        System.out.printf(" |- %.2f %% dos atendimentos foram sem prioridade \n",fila.getPorcentNormalAtendidos());
+                        //System.out.println(" |- " + fila.getPorcentPrioridadeAtendidos() + "% dos atendimentos foram com prioridades");
+                        System.out.printf(" |- %.2f %% dos atendimentos foram com prioridade \n",fila.getPorcentPrioridadeAtendidos());
                     }
                     break;
 
@@ -83,13 +94,14 @@ public class UsoFila{
                         System.out.println("Atendimentos concluidos");
                         System.out.println("Total de atendimentos: " + fila.getTotalAtendidos());
                         if(fila.getTotalAtendidos() > 0){
-                            System.out.println(" |- " + fila.getPorcentPrioridade() + "% dos atendimentos foram sem prioridades");
-                            System.out.println(" |- " + fila.getPorcentNormal() + "% dos atendimentos foram com prioridades");
+                            //System.out.println(" |- " + fila.getPorcentPrioridadeAtendidos() + "% dos atendimentos foram sem prioridades");
+                            //System.out.println(" |- " + fila.getPorcentNormalAtendidos() + "% dos atendimentos foram com prioridades");
+                            System.out.printf(" |- %.2f %% dos atendimentos foram sem prioridade \n",fila.getPorcentNormalAtendidos());
+                            System.out.printf(" |- %.2f %% dos atendimentos foram com prioridade \n",fila.getPorcentPrioridadeAtendidos());
                         }
                         
                         // Mostra o histórico de atendimentos
-                        System.out.println("=-=-=-=-=-=-==-=-=-=-=-=-==-=-=-=-=-=-=");
-                        System.out.println("=-=-=-=-Historico de Atendimentos-=-=-=");
+                        System.out.println("=-=-=-=Historico de Atendimentos=-=-=");
 
                         String[] historico = new String[fila.getTotalAtendidos()];
                         historico = fila.mostrarHistorico();
@@ -104,6 +116,7 @@ public class UsoFila{
                     }else{
                        System.out.println("O atendimento nao foi conluido, restam " + ((fila.getTam() - fila.getTotalAtendidos())) + " paciente(s) na fila");
                     }
+                    System.out.println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
                     break;
 
                 default:
