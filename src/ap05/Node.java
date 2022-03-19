@@ -1,11 +1,11 @@
 package ap05;
 public class Node {
-    private String nome;
+    private String nome; // nome do paciente
 	private Node prox;
-    private int senha;
-    private boolean prioridade;
-    private boolean excluido;
-    private int ordem;
+    private int senha; // senha de atendimento
+    private boolean prioridade; // verifica se é um atendimento prioritario ou nao
+    private boolean excluido; // verificar se um paciente foi atendido ou nao
+    private int ordem; // utilizado para ordenar o historico de pacientes
 		
     public Node(String nome, boolean prioridade) {
         this.nome = nome;
