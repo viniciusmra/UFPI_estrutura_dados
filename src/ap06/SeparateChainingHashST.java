@@ -39,7 +39,7 @@ public class SeparateChainingHashST<Key, Value> {
     }
 
     // hash function for keys - returns value between 0 and m-1
-    private int hashTextbook(Key key) {
+    private int hashTextbook(Key key) { //ao inves de chamar o hash com 31 alterar para nosso valor
         return (key.hashCode() & 0x7fffffff) % m;
     }
 
@@ -149,8 +149,6 @@ public class SeparateChainingHashST<Key, Value> {
         }
         return queue;
     } 
-
-
     /**
      * Unit tests the {@code SeparateChainingHashST} data type.
      *
@@ -166,7 +164,6 @@ public class SeparateChainingHashST<Key, Value> {
         // print keys
         for (String s : st.keys()) 
             StdOut.println(s + " " + st.get(s)); 
-
     }
 
 }
