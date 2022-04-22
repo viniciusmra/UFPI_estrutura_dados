@@ -1,6 +1,6 @@
 package ap06;
-import java.lang.Math;
 
+import java.lang.Math;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -74,11 +74,23 @@ public class app {
 
     public static int[] hashCodeApp(String[] vet, int M, int R){
         int[] intVet = new int[vet.length];
-        int h = 0;
-        for (int i=0; i<vet.length; i++){
-            h = (R * h + vet[i].charAt(0)) % M;
+       
+        //s = palavra
+        for(int j = 0; j<vet.length; j++){
+            int h = 0;
+            for (int i = 0; vet[i].length() < s.length(); i++){
+                h = (R * h + (vet[i].charAt(i))) % M;
+            }
             intVet[i] = h;
-        }      
+        }
+        
+
+        // parte errada
+        //for (int i=0; i<vet.length; i++){
+        //    h = (R * h + (vet[i].charAt(0)-'a')) % M;
+        //    intVet[i] = h;
+        //}      
+        
         return intVet;
     }
 
@@ -94,9 +106,6 @@ public class app {
             }
             histogramVet[i] = count;
         }
-
-
-        
         return histogramVet;
     }
 
@@ -106,17 +115,28 @@ public class app {
         //String[] vet = readWords("tale.txt");
         //newFile(vet, "taleUnico.txt");
 
-        int M = 97;
-        int R = 33;
-        
-        String[] vet = readWords("taleUnico.txt");
+        int M = 4;
+        int R = 11;
+        /*
+        String[] vet = readWords("q5.txt");
         int[] hashVet = hashCodeApp(vet,M, R);
 
-        int[] histogramVet = histogram(hashVet, 100);
+        int[] histogramVet = histogram(hashVet, M);
         
         for(int i = 0; i < histogramVet.length; i++){
-            System.out.println(i + "; " + histogramVet[i] + "; " + ((int) 11708/M));
+            //System.out.println(i + "; " + histogramVet[i] + "; " + ((int) 11708/M));
+            System.out.println(i + "; " + histogramVet[i] + "; " + ((int) 13/M));
+        }*/
+
+        SeparateChainingHashST<String, Integer> st = new SeparateChainingHashST<String, Integer>(M,R);
+        String[] vet = readWords("taleUnico.txt");
+        for (int i = 0; i < vet.length; i++) {
+            String key = vet[i];
+            st.put(key, i);
         }
-       
+
+        // print keys
+        for (String s : st.keys()) 
+            StdOut.println(s + " " + st.get(s)); 
     }
 }

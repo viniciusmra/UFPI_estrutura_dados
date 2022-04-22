@@ -1,4 +1,4 @@
-package atividadePratica2;
+package ap06;
 /******************************************************************************
  *  Compilation:  javac StdOut.java
  *  Execution:    java StdOut

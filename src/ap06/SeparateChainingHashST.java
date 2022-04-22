@@ -1,9 +1,11 @@
-package edu.princeton.cs.algs4;
+package ap06;
 
 public class SeparateChainingHashST<Key, Value> {
     private static final int INIT_CAPACITY = 4;
     private int n;                                // number of key-value pairs
     private int m;                                // hash table size
+    private int r;                                //espalhamento
+
     private SequentialSearchST<Key, Value>[] st;  // array of linked-list symbol tables
 
     /*
@@ -17,8 +19,9 @@ public class SeparateChainingHashST<Key, Value> {
      * Initializes an empty symbol table with {@code m} chains.
      * @param m the initial number of chains
      */
-    public SeparateChainingHashST(int m) {
+    public SeparateChainingHashST(int m, int r) {
         this.m = m;
+        this.r = r;
         st = (SequentialSearchST<Key, Value>[]) new SequentialSearchST[m];
         for (int i = 0; i < m; i++)
             st[i] = new SequentialSearchST<Key, Value>();
@@ -45,11 +48,22 @@ public class SeparateChainingHashST<Key, Value> {
 
     // hash function for keys - returns value between 0 and m-1 (assumes m is a power of 2)
     // (from Java 7 implementation, protects against poor quality hashCode() implementations)
+    // Função antiga
+    /*
     private int hash(Key key) {
         int h = key.hashCode();
         h ^= (h >>> 20) ^ (h >>> 12) ^ (h >>> 7) ^ (h >>> 4);
         return h & (m-1);
     }
+    */
+
+    private int hash(Key key){
+        int h = 0;
+        for (int i = 0; i < key.length(); i++){
+               h = (r * h + (key.charAt(i))) % m;
+        }
+    }
+
 
     /**
      * Returns the number of key-value pairs in this symbol table.
@@ -115,7 +129,7 @@ public class SeparateChainingHashST<Key, Value> {
         }
 
         // double table size if average length of list >= 10
-        if (n >= 10*m) resize(2*m);
+        //if (n >= 10*m) resize(2*m);
 
         int i = hash(key);
         if (!st[i].contains(key)) n++;
@@ -137,7 +151,7 @@ public class SeparateChainingHashST<Key, Value> {
         st[i].delete(key);
 
         // halve table size if average length of list <= 2
-        if (m > INIT_CAPACITY && n <= 2*m) resize(m/2);
+        //if (m > INIT_CAPACITY && n <= 2*m) resize(m/2);
     } 
 
     // return keys in symbol table as an Iterable

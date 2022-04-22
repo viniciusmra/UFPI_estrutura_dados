@@ -1,4 +1,4 @@
-package atividadePratica2;
+package ap06;
 /******************************************************************************
  *  Compilation:  javac StdIn.java
  *  Execution:    java StdIn   (interactive test of basic functionality)
