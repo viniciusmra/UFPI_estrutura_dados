@@ -1,4 +1,5 @@
 package ap06;
+
 /******************************************************************************
  *  Compilation:  javac StdOut.java
  *  Execution:    java StdOut
