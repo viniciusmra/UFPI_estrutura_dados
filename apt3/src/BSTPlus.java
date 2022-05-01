@@ -1,4 +1,13 @@
-// Classe herda todos os métodos da classe BST e implementa alguns métodos extras.
+/*  Classe herda todos os métodos da classe BST e implementa alguns métodos extras.
+    
+    TODO
+        Implentar uma verificação para caso a chave passada no parametro key do método getDepth
+            não seja encontrada e o método retorne -1.
+        Tentar trazer a modificação do Node da BST para BSTPlus
+        Implementar as funções da questão 4
+        Implementar a interface
+
+*/
 
 public class BSTPlus<Key extends Comparable<Key>, Value> extends BST<Key, Value>{
     public BSTPlus(){ //construtor
