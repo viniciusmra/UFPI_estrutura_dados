@@ -44,8 +44,13 @@ public class App {
 
         System.out.println(st.internalPathLength());
 
-        st.printAnterior("Angelus");
-      
+        //st.printAnterior("Ellem");
+        
+        st.preOrder();
+        System.out.print("\n");
+        st.posOrder();
+        System.out.print("\n");
+        st.inOrder();
 
     }
 }

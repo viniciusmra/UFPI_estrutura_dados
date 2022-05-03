@@ -1,11 +1,13 @@
+import java.util.ArrayList;
+
 /*  Classe herda todos os métodos da classe BST e implementa alguns métodos extras.
     
-    TODO
-        Implentar uma verificação para caso a chave passada no parametro key do método getDepth
-            não seja encontrada e o método retorne -1.
-        Tentar trazer a modificação do Node da BST para BSTPlus
-        Implementar as funções da questão 4
-        Implementar a interface
+    TO-DO:
+        -Implentar uma verificação para caso a chave passada no parametro key do método getDepth
+            não seja encontrada e o método retorne -1;
+        -Implementar a interface;
+        -Colocar os arrays da travessias em um arquivo.
+
 
 */
 
@@ -14,7 +16,6 @@ public class BSTPlus<Key extends Comparable<Key>, Value> extends BST<Key, Value>
         super();
     }
 
-    // Versão modificada da put incluindo o parametro "anterior"
 
     public void put(Key key, Value val) {
         if (key == null) throw new IllegalArgumentException("calls put() with a null key");
@@ -27,7 +28,7 @@ public class BSTPlus<Key extends Comparable<Key>, Value> extends BST<Key, Value>
     }
 
     private Node put(Node x, Key key, Value val, Node anterior) {
-        if (x == null) return new Node(key, val, 1, anterior); //+1
+        if (x == null) return new Node(key, val, 1, anterior); 
         int cmp = key.compareTo(x.key);
         if      (cmp < 0) x.left  = put(x.left,  key, val, x);
         else if (cmp > 0) x.right = put(x.right, key, val, x);
@@ -37,7 +38,14 @@ public class BSTPlus<Key extends Comparable<Key>, Value> extends BST<Key, Value>
         return x;
     }
 
-
+    public boolean verification(Key key)  {
+        for (Key s : keys()) {
+			if(s.compareTo(key)==0){
+                return true;
+            }
+		}
+        return false;
+    }
     // Métodod que retorna a profundidade de um elemento com determianda chave key
     public int getDepth(Key key){
         Node actualNode = root;
@@ -98,11 +106,68 @@ public class BSTPlus<Key extends Comparable<Key>, Value> extends BST<Key, Value>
         try {
             System.out.println(getNode(key).anterior.key);
         } catch (Exception e) {
-            //TODO: handle exception
+            System.out.println("Errouu!");
         }
         
     }
+     public void preOrder(){
+         preOrder(root);
+     }
+    public void preOrder(Node root){
+        Queue<Node> queue = new Queue<Node>();
+        ArrayList<Key> preOrder = new ArrayList<Key>();
+        queue.enqueue(root);
 
-
-
+        while(!queue.isEmpty()){
+            Node x = queue.dequeue();
+            if(x != null){
+                //System.out.print(x.key+" ");
+                preOrder.add(x.key); 
+                System.out.print(preOrder);
+                preOrder(x.left);
+                preOrder(x.right);   
+             
+            }
+        }
+        //System.out.print(preOrder);
+       
+    }
+    public void inOrder(){
+         inOrder(root);
+     }
+    public void inOrder(Node root){
+        Queue<Node> queue = new Queue<Node>();
+        ArrayList<Key> inOrder = new ArrayList<Key>();
+        queue.enqueue(root);
+       
+        while(!queue.isEmpty()){
+            Node x = queue.dequeue();
+            if(x != null){
+                inOrder(x.left);
+                inOrder.add(x.key); 
+                System.out.print(inOrder);  
+                inOrder(x.right); 
+                
+            }
+        }
+    }
+     public void posOrder(){
+         posOrder(root);
+     }
+    public void posOrder(Node root){
+        Queue<Node> queue = new Queue<Node>();
+        ArrayList<Key> posOrder = new ArrayList<Key>();
+        queue.enqueue(root);
+       
+        while(!queue.isEmpty()){
+            Node x = queue.dequeue();
+            if(x != null){
+                posOrder(x.left);
+                posOrder(x.right);
+                posOrder.add(x.key); 
+                System.out.print(posOrder);   
+                
+            }
+        }
+    }
 }

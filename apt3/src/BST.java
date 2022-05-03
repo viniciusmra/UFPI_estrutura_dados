@@ -93,6 +93,10 @@ public class BST<Key extends Comparable<Key>, Value> {
             this.anterior = anterior;
         }
 
+		public int compareTo(String string) {
+			return 0;
+		}
+
     }
 
     /**
@@ -190,7 +194,6 @@ public class BST<Key extends Comparable<Key>, Value> {
         return x;
 
     }
-
 
     /**
      * Removes the smallest key and associated value from the symbol table.
@@ -494,16 +497,17 @@ public class BST<Key extends Comparable<Key>, Value> {
     public Iterable<Key> levelOrder() {
         Queue<Key> keys = new Queue<Key>();
         Queue<Node> queue = new Queue<Node>();
-        queue.enqueue(root);
-        while (!queue.isEmpty()) {
-            Node x = queue.dequeue();
-            if (x == null) continue;
+        queue.enqueue(root);  // root is the first
+        while (!queue.isEmpty()) { 
+            Node x = queue.dequeue(); // remove X
+            if (x == null) continue; 
             keys.enqueue(x.key);
             queue.enqueue(x.left);
             queue.enqueue(x.right);
         }
         return keys;
     }
+
 
     // Vinicius
    
