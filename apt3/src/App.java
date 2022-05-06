@@ -34,18 +34,8 @@ public class App {
                 st.put(nomes[i], i);
             }
         } catch (Exception e) {
-            System.out.println("NÃO CONSEGUE NÉ?!");
+            System.out.println("NAO CONSEGUE NE?!");
             return;
         }
-
-        for(int i = 0; i < nomes.length; i++){ //profundidade de cada chave
-            System.out.println(nomes[i]  + " - " + st.getDepth(nomes[i]));
-        }
-
-        System.out.println(st.internalPathLength()); //comprimento interno da arvore
-        //travessias
-        System.out.println(st.preOrder());
-        System.out.println(st.inOrder());
-        System.out.println(st.posOrder());
     }
 }

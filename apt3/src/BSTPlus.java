@@ -1,19 +1,31 @@
 import java.util.ArrayList;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
-/*  Classe herda todos os metodos da classe BST e implementa alguns metodos extras.
-    
-    TO-DO:
-        -Implentar uma verificacao para caso a chave passada no parametro key do metodo getDepth
-            nao seja encontrada e o metodo retorne -1;
-        -Implementar a interface;
-        -Colocar os arrays da travessias em um arquivo.
-
-
-*/
-
+//  Classe herda todos os metodos da classe BST e implementa alguns metodos extras.
+ 
 public class BSTPlus<Key extends Comparable<Key>, Value> extends BST<Key, Value>{
     public BSTPlus(){ //construtor
         super();
+    }
+      public static String[] readWords(String filename) { // abrir o arquivo tales.tx
+        ArrayList<String> wordList = new ArrayList<String>(); // Cria um arraylist para guardar os dados
+        try {
+            File file = new File(filename);
+            Scanner rows = new Scanner(file);
+    
+            while (rows.hasNext()) { // Continua lendo enquanto ainda estiver linhas para serem lidas
+                String word = rows.next();
+                wordList.add(word); // Adiciona a linha lida ao ArrayList
+            }
+            rows.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Erro ao efetuar a leitura");
+            e.printStackTrace();
+        }
+    
+        return wordList.toArray(new String[0]);
     }
     public void put(Key key, Value val) {
         if (key == null) throw new IllegalArgumentException("calls put() with a null key");
@@ -44,33 +56,58 @@ public class BSTPlus<Key extends Comparable<Key>, Value> extends BST<Key, Value>
 		}
         return false;
     }
+
+
+    public int getValue(Key key) throws Exception {
+        boolean flag = false;
+        for (Key s : keys()) {
+			if(s.compareTo(key) == 0){
+                flag = true;
+            }
+		}
+
+        if(flag){
+            for (Key s : keys()) {
+                if(s.compareTo(key) == 0){
+                    return (int)getNode(key).val;
+                }
+            }
+        } else{
+            throw new Exception("Node nao existe");
+        }
+        return 0;
+    }
     // Métodod que retorna a profundidade de um elemento com determianda chave key
     public int getDepth(Key key){
-        Node actualNode = root;
-        int depth = 0;
-        while(true){
-            // caso actualNode esteja vazio, retorna -1
-            if(actualNode == null){ 
-                return -1;
-            }
-        
-            // caso a key do actualNode seja igual a que está sendo buscada, retorna a depth
-            if(key.compareTo(actualNode.key) == 0){ 
-                return depth;
-                
-            // caso a key que esta sendo buscada seja maior que a do actualNode, a variável depth é incrementada e 
-            // o actualNode agora é actualNode.right, ou seja, o nó que esta a direita
-            } else if(key.compareTo(actualNode.key) > 0){
-                depth++;
-                actualNode = actualNode.right;
+       if(!verification(key)){
+           return -1;
+       }else{
+            Node actualNode = root;
+            int depth = 0;
+            while(true){
+                // caso actualNode esteja vazio, retorna -1
+                if(actualNode == null){ 
+                    return -1;
+                }
             
-            // caso a key que esta sendo buscada seja menor que a do actualNode, a variável depth é incrementada e 
-            // o actualNode agora é actualNode.left, ou seja, o nó que esta a left 
-            } else if(key.compareTo(actualNode.key) < 0){
-                depth++;
-                actualNode = actualNode.left;
+                // caso a key do actualNode seja igual a que está sendo buscada, retorna a depth
+                if(key.compareTo(actualNode.key) == 0){ 
+                    return depth;
+                    
+                // caso a key que esta sendo buscada seja maior que a do actualNode, a variável depth é incrementada e 
+                // o actualNode agora é actualNode.right, ou seja, o nó que esta a direita
+                } else if(key.compareTo(actualNode.key) > 0){
+                    depth++;
+                    actualNode = actualNode.right;
+                
+                // caso a key que esta sendo buscada seja menor que a do actualNode, a variável depth é incrementada e 
+                // o actualNode agora é actualNode.left, ou seja, o nó que esta a left 
+                } else if(key.compareTo(actualNode.key) < 0){
+                    depth++;
+                    actualNode = actualNode.left;
+                }
             }
-        }
+       }
     }
 
     public int internalPathLength(){
@@ -99,13 +136,6 @@ public class BSTPlus<Key extends Comparable<Key>, Value> extends BST<Key, Value>
         }
         return null;
     }
-
-    // public void printAnterior(Key key){
-    //     try {
-    //         System.out.println(getNode(key).anterior.key);
-    //     } catch (Exception e) {
-    //         System.out.println("Errouu!");
-    //     }
         
     // }
      public ArrayList<Key> preOrder(){ //Metodo para travessia em pre-ordem 
@@ -113,6 +143,7 @@ public class BSTPlus<Key extends Comparable<Key>, Value> extends BST<Key, Value>
         preOrder(root, preOrderList);
         return preOrderList; 
     }
+    
     public void preOrder(Node root,  ArrayList<Key> preOrder ){
         Queue<Node> queue = new Queue<Node>();
         queue.enqueue(root);
@@ -125,6 +156,7 @@ public class BSTPlus<Key extends Comparable<Key>, Value> extends BST<Key, Value>
             }
         }
     }
+
     public ArrayList<Key> inOrder(){ //Metodo para travessia em em-ordem olá 
         ArrayList<Key> inOrderList = new ArrayList<Key>();
         inOrder(root, inOrderList);
