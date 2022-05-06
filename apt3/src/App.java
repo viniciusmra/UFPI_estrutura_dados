@@ -42,15 +42,10 @@ public class App {
             System.out.println(nomes[i]  + " - " + st.getDepth(nomes[i]));
         }
 
-        System.out.println(st.internalPathLength());
-
-        //st.printAnterior("Ellem");
-        
-        st.preOrder();
-        System.out.print("\n");
-        st.posOrder();
-        System.out.print("\n");
-        st.inOrder();
-
+        System.out.println(st.internalPathLength()); //comprimento interno da arvore
+        //travessias
+        System.out.println(st.preOrder());
+        System.out.println(st.inOrder());
+        System.out.println(st.posOrder());
     }
 }

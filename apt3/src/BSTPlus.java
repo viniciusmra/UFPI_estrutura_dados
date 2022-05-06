@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
-/*  Classe herda todos os métodos da classe BST e implementa alguns métodos extras.
+/*  Classe herda todos os metodos da classe BST e implementa alguns metodos extras.
     
     TO-DO:
-        -Implentar uma verificação para caso a chave passada no parametro key do método getDepth
-            não seja encontrada e o método retorne -1;
+        -Implentar uma verificacao para caso a chave passada no parametro key do metodo getDepth
+            nao seja encontrada e o metodo retorne -1;
         -Implementar a interface;
         -Colocar os arrays da travessias em um arquivo.
 
@@ -15,8 +15,6 @@ public class BSTPlus<Key extends Comparable<Key>, Value> extends BST<Key, Value>
     public BSTPlus(){ //construtor
         super();
     }
-
-
     public void put(Key key, Value val) {
         if (key == null) throw new IllegalArgumentException("calls put() with a null key");
         if (val == null) {
@@ -102,71 +100,63 @@ public class BSTPlus<Key extends Comparable<Key>, Value> extends BST<Key, Value>
         return null;
     }
 
-    public void printAnterior(Key key){
-        try {
-            System.out.println(getNode(key).anterior.key);
-        } catch (Exception e) {
-            System.out.println("Errouu!");
-        }
+    // public void printAnterior(Key key){
+    //     try {
+    //         System.out.println(getNode(key).anterior.key);
+    //     } catch (Exception e) {
+    //         System.out.println("Errouu!");
+    //     }
         
+    // }
+     public ArrayList<Key> preOrder(){ //Metodo para travessia em pre-ordem 
+        ArrayList<Key> preOrderList = new ArrayList<Key>();
+        preOrder(root, preOrderList);
+        return preOrderList; 
     }
-     public void preOrder(){
-         preOrder(root);
-     }
-    public void preOrder(Node root){
+    public void preOrder(Node root,  ArrayList<Key> preOrder ){
         Queue<Node> queue = new Queue<Node>();
-        ArrayList<Key> preOrder = new ArrayList<Key>();
         queue.enqueue(root);
-
         while(!queue.isEmpty()){
             Node x = queue.dequeue();
             if(x != null){
-                //System.out.print(x.key+" ");
-                preOrder.add(x.key); 
-                System.out.print(preOrder);
-                preOrder(x.left);
-                preOrder(x.right);   
-             
-            }
-        }
-        //System.out.print(preOrder);
-       
-    }
-    public void inOrder(){
-         inOrder(root);
-     }
-    public void inOrder(Node root){
-        Queue<Node> queue = new Queue<Node>();
-        ArrayList<Key> inOrder = new ArrayList<Key>();
-        queue.enqueue(root);
-       
-        while(!queue.isEmpty()){
-            Node x = queue.dequeue();
-            if(x != null){
-                inOrder(x.left);
-                inOrder.add(x.key); 
-                System.out.print(inOrder);  
-                inOrder(x.right); 
-                
+                preOrder.add(x.key);
+                preOrder(x.left, preOrder);
+                preOrder(x.right, preOrder);  
             }
         }
     }
-     public void posOrder(){
-         posOrder(root);
+    public ArrayList<Key> inOrder(){ //Metodo para travessia em em-ordem olá 
+        ArrayList<Key> inOrderList = new ArrayList<Key>();
+        inOrder(root, inOrderList);
+        return inOrderList; 
      }
-    public void posOrder(Node root){
+    public void inOrder(Node root, ArrayList<Key> inOrder){
         Queue<Node> queue = new Queue<Node>();
-        ArrayList<Key> posOrder = new ArrayList<Key>();
         queue.enqueue(root);
        
         while(!queue.isEmpty()){
             Node x = queue.dequeue();
             if(x != null){
-                posOrder(x.left);
-                posOrder(x.right);
-                posOrder.add(x.key); 
-                System.out.print(posOrder);   
-                
+                inOrder(x.left, inOrder);
+                inOrder.add(x.key);  
+                inOrder(x.right, inOrder); 
+            }
+        }
+    }
+     public ArrayList<Key> posOrder(){ //Metodo para travessia em pos-ordem olá 
+        ArrayList<Key> posOrderList = new ArrayList<Key>();
+        posOrder(root, posOrderList);
+        return posOrderList;
+     }
+    public void posOrder(Node root, ArrayList<Key> posOrder){
+        Queue<Node> queue = new Queue<Node>();
+        queue.enqueue(root);
+        while(!queue.isEmpty()){
+            Node x = queue.dequeue();
+            if(x != null){
+                posOrder(x.left, posOrder);
+                posOrder(x.right, posOrder);
+                posOrder.add(x.key);    
             }
         }
     }
