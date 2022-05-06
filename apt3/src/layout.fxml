@@ -8,35 +8,35 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="713.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
       <AnchorPane prefHeight="719.0" prefWidth="474.0">
          <children>
             <TextField fx:id="entryField" layoutX="14.0" layoutY="34.0" onAction="#nameEntry" prefHeight="26.0" prefWidth="216.0" />
-            <ListView fx:id="entryList" editable="true" layoutX="13.0" layoutY="120.0" prefHeight="404.0" prefWidth="216.0" />
+            <ListView fx:id="entryList" editable="true" layoutX="13.0" layoutY="124.0" prefHeight="305.0" prefWidth="216.0" />
             <Label layoutX="14.0" layoutY="102.0" text="Entradas da Árvore" underline="true" />
             <Button fx:id="fileButton" layoutX="14.0" layoutY="65.0" mnemonicParsing="false" onAction="#fileEntry" text="Adicionar arquivo" />
             <Button fx:id="nameButton" layoutX="131.0" layoutY="65.0" mnemonicParsing="false" onAction="#nameEntry" text="Adicionar nome" />
             <Label layoutX="14.0" layoutY="16.0" text="Entrada" underline="true" />
-            <Button fx:id="clearButton" layoutX="13.0" layoutY="559.0" mnemonicParsing="false" onAction="#clear" prefHeight="25.0" prefWidth="216.0" text="Limpar" />
-            <Button fx:id="deleteButton" layoutX="13.0" layoutY="531.0" mnemonicParsing="false" onAction="#deleteSelected" prefHeight="25.0" prefWidth="216.0" text="Excluir elemento selecionado" />
-            <Line endX="-100.0" endY="677.0" layoutX="343.0" layoutY="27.0" startX="-100.0" startY="-14.0" />
-            <ListView fx:id="outList" layoutX="258.0" layoutY="256.0" prefHeight="445.0" prefWidth="200.0" />
+            <Button fx:id="clearButton" layoutX="13.0" layoutY="461.0" mnemonicParsing="false" onAction="#clear" prefHeight="25.0" prefWidth="216.0" text="Limpar" />
+            <Button fx:id="deleteButton" layoutX="13.0" layoutY="433.0" mnemonicParsing="false" onAction="#deleteSelected" prefHeight="25.0" prefWidth="216.0" text="Excluir elemento selecionado" />
+            <Line endX="-100.0" endY="567.0" layoutX="343.0" layoutY="27.0" startX="-100.0" startY="-14.0" />
+            <ListView fx:id="outList" layoutX="258.0" layoutY="256.0" prefHeight="345.0" prefWidth="200.0" />
             <Button fx:id="findButton" layoutX="258.0" layoutY="66.0" mnemonicParsing="false" onAction="#findNode" prefHeight="25.0" prefWidth="200.0" text="Procurar" />
             <TextField fx:id="nodeEntry" layoutX="258.0" layoutY="35.0" onAction="#findNode" prefHeight="26.0" prefWidth="200.0" />
-            <Label layoutX="14.0" layoutY="630.0" text="Informações da árvore" underline="true" />
+            <Label layoutX="14.0" layoutY="533.0" text="Informações da árvore" underline="true" />
             <Button fx:id="preButton" layoutX="258.0" layoutY="196.0" mnemonicParsing="false" onAction="#preOrder" prefHeight="25.0" prefWidth="200.0" text="Pré ordem" />
             <Button fx:id="inButton" layoutX="258.0" layoutY="168.0" mnemonicParsing="false" onAction="#inOrder" prefHeight="25.0" prefWidth="200.0" text="Em ordem" />
             <Button fx:id="posButton" layoutX="258.0" layoutY="224.0" mnemonicParsing="false" onAction="#posOrder" prefHeight="25.0" prefWidth="200.0" text="Pós ordem" />
             <Line endX="-89.0" endY="213.0" layoutX="355.0" layoutY="-72.0" startX="94.0" startY="213.0" />
-            <Label fx:id="labelHeight" layoutX="14.0" layoutY="649.0" text="Altura: " />
-            <Label fx:id="labelInternalPath" layoutX="14.0" layoutY="667.0" text="Comprimento interno: " />
-            <Label fx:id="labelNNodes" layoutX="14.0" layoutY="687.0" text="Número de nós:" />
+            <Label fx:id="labelHeight" layoutX="14.0" layoutY="552.0" text="Altura: " />
+            <Label fx:id="labelInternalPath" layoutX="14.0" layoutY="570.0" text="Comprimento interno: " />
+            <Label fx:id="labelNNodes" layoutX="14.0" layoutY="590.0" text="Número de nós:" />
             <Label layoutX="258.0" layoutY="17.0" text="Procurar nó" underline="true" />
             <Label layoutX="258.0" layoutY="147.0" text="Travessias" underline="true" />
-            <Line endX="-341.0" endY="747.0" layoutX="359.0" layoutY="-123.0" startX="-139.0" startY="747.0" />
+            <Line endX="-341.0" endY="747.0" layoutX="359.0" layoutY="-222.0" startX="-139.0" startY="747.0" />
             <Label fx:id="labelValue" layoutX="258.0" layoutY="98.0" text="Valor: " />
-            <Button fx:id="treeButton" layoutX="14.0" layoutY="587.0" mnemonicParsing="false" onAction="#generateTree" prefHeight="25.0" prefWidth="216.0" text="Gerar árvore" />
+            <Button fx:id="treeButton" layoutX="14.0" layoutY="489.0" mnemonicParsing="false" onAction="#generateTree" prefHeight="25.0" prefWidth="216.0" text="Gerar árvore" />
             <Label fx:id="labelDepth" layoutX="258.0" layoutY="115.0" text="Profundidade: " />
          </children>
       </AnchorPane>
