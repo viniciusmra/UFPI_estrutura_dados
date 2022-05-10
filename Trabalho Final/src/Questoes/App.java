@@ -8,14 +8,14 @@ import java.util.Scanner;
 	Pedro Felipe
     Vinicius Alves
 
-	DESCRIÇÃO: Esta atividade versa sobre a Java Collections API.
-	Collections em Java são usadas para armazenar grupos de objetos. A Collections API
-	fornece um número de interfaces (incluindo Collection, List, Map e Set) para definir
-	uma maneira padrão de usar uma faixa concreta de estrutura de dados. 
+	DESCRICAO: Esta atividade versa sobre a Java Collections API.
+	Collections em Java sao usadas para armazenar grupos de objetos. A Collections API
+	fornece um numero de interfaces (incluindo Collection, List, Map e Set) para definir
+	uma maneira padrao de usar uma faixa concreta de estrutura de dados. 
 
 */
 
-public class App <Key, Value>{
+public class App{
 
     public static void main(String[] args) throws FileNotFoundException {
 		String filename = "src/Questoes/leipzig100kUnic.txt";
@@ -49,11 +49,9 @@ public class App <Key, Value>{
 			System.out.println("=-=-=-=-=-=-=-=-=-=");
 			System.out.print("Informe uma opção: ");
 			key = keyboard.nextInt();
-			//keyboard.next();
 			System.out.println("=-=-=-=-=-=-=-=-=-=");
 
 			switch(key){
-
 				case 0:
 					System.out.println("Carregando...");
 					System.out.println("=-=-=-=-=-=-=-=-=-=");
@@ -69,7 +67,7 @@ public class App <Key, Value>{
 						}
 					}
 
-				break;
+					break;
 
 				case 1:
 					System.out.println("Carregando...");
@@ -86,7 +84,7 @@ public class App <Key, Value>{
 						}
 					}
 
-				break;
+					break;
 
 				case 2:
 					System.out.println("Carregando...");
@@ -102,8 +100,7 @@ public class App <Key, Value>{
 							System.out.println("=-=-=-=-=-=-=-=-=-=");
 						}	
 					}
-
-				break;
+					break;
 
 				case 3:
 					System.out.println("Carregando...");
@@ -143,7 +140,7 @@ public class App <Key, Value>{
 						}
 					}
 
-				break;
+					break;
 
 				case 4:
 					System.out.println("Encerrando...");

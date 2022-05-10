@@ -10,7 +10,7 @@ import java.util.Vector;
 public class Remove {
 
 	public static Vector<String> readWords(String filename) { // abrir o arquivo tales.tx
-		Vector<String> wordList = new Vector<String>(); // Cria um arraylist para guardar os dados
+		Vector<String> wordList = new Vector<String>(); // Cria um vetor para guardar os dados
 		//int nWords = 0;
 		try {
 			File file = new File(filename);

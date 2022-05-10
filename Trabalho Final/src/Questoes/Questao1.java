@@ -18,9 +18,9 @@ public class Questao1{
         INPUT: RECEBE O NOME DO ARQUIVO
 
         METODO RESPONSAVEL POR CALCULAR :
-        O TEMPO DE EXECU플O DA INSER플O DOS ELEMENTOS DO ARQUIVO NO VETOR;
-        O TEMPO DE EXECU플O PARA PROCURAR 10 ELEMENTOS NO VETOR;
-        O TEMPO DE EXECU플O PARA DELETAR 10 ELEMENTOS NO VETOR;
+        O TEMPO DE EXECUCAO DA INSERCAO DOS ELEMENTOS DO ARQUIVO NO VETOR;
+        O TEMPO DE EXECUACAO PARA PROCURAR 10 ELEMENTOS NO VETOR;
+        O TEMPO DE EXECUCAO PARA DELETAR 10 ELEMENTOS NO VETOR;
 
         OUTPUT: RETORNA UM VETOR COM O TEMPO DAS EXECUCOES
     */
@@ -56,9 +56,7 @@ public class Questao1{
         long tmInicialVectD = System.nanoTime();
 
         for(int i = 0; i < words.length; i++){
-            //System.out.println(stVector.get(stVector.indexOf(words[i])));
             stVector.remove(words[i]);
-            //System.out.println(stVector.contains(words[i]));
         }
 
         long tmFinalVectD = System.nanoTime();
@@ -99,7 +97,6 @@ public class Questao1{
 
         for(int i = 0; i < words.length; i++){
             stArrayList.remove(words[i]);
-            //System.out.println(stArrayList.contains(words[i]));
         }
 
         long tmFinalALD = System.nanoTime();
@@ -139,7 +136,6 @@ public class Questao1{
 
         for(int i = 0; i < words.length; i++){
             stLinkedList.remove(words[i]);
-            //System.out.println(stLinkedList.contains(words[i]));
         }
 
         long tmFinalLLD = System.nanoTime();
