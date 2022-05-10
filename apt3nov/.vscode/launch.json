@@ -1,0 +1,57 @@
+{
+    // Use o IntelliSense para saber mais sobre os atributos possíveis.
+    // Focalizar para exibir as descrições dos atributos existentes.
+    // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch apt3nov/GUI",
+            "request": "launch",
+            "mainClass": "apt3nov/GUI",
+            "projectName": "apt3nov_66a75181"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "apt3_d8ffb8d4"
+        },
+        {
+            "type": "java",
+            "name": "Launch GUI",
+            "request": "launch",
+            "vmArgs": "--module-path src/javafx/lib --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "GUI",
+            "projectName": "apt3nov_66a75181"
+        },
+        {
+            "type": "java",
+            "name": "Launch Queue",
+            "request": "launch",
+            "mainClass": "Queue",
+            "projectName": "apt3_d8ffb8d4"
+        },
+        {
+            "type": "java",
+            "name": "Launch StdIn",
+            "request": "launch",
+            "mainClass": "StdIn",
+            "projectName": "apt3_d8ffb8d4"
+        },
+        {
+            "type": "java",
+            "name": "Launch StdOut",
+            "request": "launch",
+            "mainClass": "StdOut",
+            "projectName": "apt3_d8ffb8d4"
+        }
+    ]
+}
