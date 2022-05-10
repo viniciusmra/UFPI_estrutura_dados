@@ -18,8 +18,8 @@ public class Questao3{
         
         TreeMap<String, Integer>  stTreeMapST = new TreeMap<>();
         for(int x=0 ; x < arq.size(); x++){// elemento a ser comparado
-         		stTreeMapST.put(arq.get(x), null);
-		  }		
+         	stTreeMapST.put(arq.get(x), null);
+		}		
 		long tmFinalTM = System.currentTimeMillis();
         time.add("Treemap : " + (tmFinalTM-tmInicialTM));	
 
@@ -43,6 +43,7 @@ public class Questao3{
 
         return time;
     }
+    
     //LINKEDHASHMAP
     public Vector<String> timeLinkedHashST(String filename){
         Vector<String> arq = new Vector<String>();
@@ -55,13 +56,13 @@ public class Questao3{
         LinkedHashMap<String, Integer> stLinkedHasMapST = new LinkedHashMap<String, Integer>();
         for(int x=0 ; x < arq.size(); x++){// elemento a ser comparado
             stLinkedHasMapST.put(arq.get(x), null);
-		  }		
+		}		
 		long tmFinalTM = System.currentTimeMillis();
         time.add("LinkedHash : " + (tmFinalTM-tmInicialTM));	
 
-         // Procura
-         long tmInicialLHMP = System.currentTimeMillis();
-         for(int i = 0; i < words.length; i++){
+        // Procura
+        long tmInicialLHMP = System.currentTimeMillis();
+        for(int i = 0; i < words.length; i++){
             stLinkedHasMapST.containsKey(words[i]);
         }
 
@@ -79,6 +80,7 @@ public class Questao3{
 
         return time;
     }
+
     public Vector<String> timeHashMapST(String filename){
         Vector<String> arq = new Vector<String>();
         Vector<String> time = new Vector<String>();
@@ -92,8 +94,8 @@ public class Questao3{
         HashMap<String, Integer> stHashMapST = new HashMap<String, Integer>();
         //TreeSet<String> stTreeMapST = new TreeSet<String>();
         for(int x=0 ; x < arq.size(); x++){// elemento a ser comparado
-				stHashMapST.put(arq.get(x), null);
-		  }		
+			stHashMapST.put(arq.get(x), null);
+		}		
 		long tmFinalHM = System.currentTimeMillis();
         time.add("HashMap : " + (tmFinalHM-tmInicialHM));
 
@@ -117,6 +119,4 @@ public class Questao3{
 
         return time;
     }
-    
-
 }

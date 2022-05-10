@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.Vector;
 
 public class Questao1{
-
     public Vector<String> timeVectorST(String filename){
 
         Vector<String> arq = new Vector<String>();
@@ -18,11 +17,11 @@ public class Questao1{
         // Insercao
 		long tmInicialVet = System.currentTimeMillis();
 		Vector<String> stVector = new Vector<String>();
-         for(int x=0 ; x < arq.size(); x++){// elemento a ser comparado
-        		stVector.add(arq.get(x));
-		 }		
-		 long tmFinalVet = System.currentTimeMillis();	
-         time.add("Insertion Vector : " + (tmFinalVet-tmInicialVet)+ " ms");	
+        for(int x=0 ; x < arq.size(); x++){// elemento a ser comparado
+        	stVector.add(arq.get(x));
+		}		
+		long tmFinalVet = System.currentTimeMillis();	
+        time.add("Insertion Vector : " + (tmFinalVet-tmInicialVet)+ " ms");	
 
         // Procura
         long tmInicialVectS = System.currentTimeMillis();
@@ -54,9 +53,9 @@ public class Questao1{
         arq = Remove.readWords(filename);
         String[] words = {"Lisbon", "NASA", "Kyunghee","Konkuk", "Sogang", "momentarily", "rubella", "vaccinations", "government", "Authorities"};
 
-	//ARRAYLIST
+	    //ARRAYLIST
 
-         //Inserção
+        //Inserção
 		long tmInicialAL = System.currentTimeMillis();
 		ArrayList<String> stArrayList = new ArrayList<String>();
         for(int x=0 ; x < arq.size(); x++){
@@ -100,7 +99,7 @@ public class Questao1{
 		long tmInicialLL = System.currentTimeMillis();
 		LinkedList<String> stLinkedList = new LinkedList<String>(); 
         for(int x=0 ; x < arq.size(); x++){// elemento a ser comparado
-         		stLinkedList.add(arq.get(x));
+         	stLinkedList.add(arq.get(x));
 		}		
 
 		long tmFinalLL = System.currentTimeMillis();
