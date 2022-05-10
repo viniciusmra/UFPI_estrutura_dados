@@ -18,15 +18,15 @@ public class Questao1{
         // Inserção
 		long tmInicialVet = System.currentTimeMillis();
 		Vector<String> stVector = new Vector<String>();
-         for(int x=0 ; x < arq.size(); x++){// elemento a ser comparado
-        		stVector.add(arq.get(x));
-		 }		
-		 long tmFinalVet = System.currentTimeMillis();	
-         time.add("Vector : " + (tmFinalVet-tmInicialVet)+ " ms");	
+        for(int x=0 ; x < arq.size(); x++){// elemento a ser comparado
+        	stVector.add(arq.get(x));
+		}		
+		long tmFinalVet = System.currentTimeMillis();	
+        time.add("Vector : " + (tmFinalVet-tmInicialVet)+ " ms");	
 
-         // Procura
-         long tmInicialVectS = System.currentTimeMillis();
-         for(int i = 0; i < words.length; i++){
+        // Procura
+        long tmInicialVectS = System.currentTimeMillis();
+        for(int i = 0; i < words.length; i++){
             stVector.contains(words[i]);
         }
 
