@@ -4,7 +4,27 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Vector;
 
+/*
+    Classe Questao 01:
+
+    RESPONSAVEL POR CONTER AS INTERFACES PARA VECTOR, LINKEDLIST e ARRAYLIST
+
+*/
+
 public class Questao1{
+
+
+    /* 
+        INPUT: RECEBE O NOME DO ARQUIVO
+
+        METODO RESPONSAVEL POR CALCULAR :
+        O TEMPO DE EXECUÇÃO DA INSERÇÃO DOS ELEMENTOS DO ARQUIVO NO VETOR;
+        O TEMPO DE EXECUÇÃO PARA PROCURAR 10 ELEMENTOS NO VETOR;
+        O TEMPO DE EXECUÇÃO PARA DELETAR 10 ELEMENTOS NO VETOR;
+
+        OUTPUT: RETORNA UM VETOR COM O TEMPO DAS EXECUCOES
+    */
+
     public Vector<String> timeVectorST(String filename){
 
         Vector<String> arq = new Vector<String>();
@@ -15,25 +35,25 @@ public class Questao1{
         //VECTOR 
 
         // Insercao
-		long tmInicialVet = System.currentTimeMillis();
+		long tmInicialVet = System.nanoTime();
 		Vector<String> stVector = new Vector<String>();
         for(int x=0 ; x < arq.size(); x++){// elemento a ser comparado
         	stVector.add(arq.get(x));
 		}		
-		long tmFinalVet = System.currentTimeMillis();	
-        time.add("Insertion Vector : " + (tmFinalVet-tmInicialVet)+ " ms");	
+		long tmFinalVet = System.nanoTime();	
+        time.add("Insertion Vector : " + (tmFinalVet-tmInicialVet)+ " ns");	
 
         // Procura
-        long tmInicialVectS = System.currentTimeMillis();
+        long tmInicialVectS = System.nanoTime();
         for(int i = 0; i < words.length; i++){
             stVector.contains(words[i]);
         }
 
-        long tmFinalVectS = System.currentTimeMillis();
-        time.add("Search time Vector : " + (tmFinalVectS-tmInicialVectS) + " ms"); 
+        long tmFinalVectS = System.nanoTime();
+        time.add("Search time Vector : " + (tmFinalVectS-tmInicialVectS) + " ns"); 
 
         // Delete
-        long tmInicialVectD = System.currentTimeMillis();
+        long tmInicialVectD = System.nanoTime();
 
         for(int i = 0; i < words.length; i++){
             //System.out.println(stVector.get(stVector.indexOf(words[i])));
@@ -41,8 +61,8 @@ public class Questao1{
             //System.out.println(stVector.contains(words[i]));
         }
 
-        long tmFinalVectD = System.currentTimeMillis();
-        time.add("Delete time Vector : " + (tmFinalVectD-tmInicialVectD) + " ms"); 
+        long tmFinalVectD = System.nanoTime();
+        time.add("Delete time Vector : " + (tmFinalVectD-tmInicialVectD) + " ns"); 
 
         return time;
     }
@@ -56,34 +76,34 @@ public class Questao1{
 	    //ARRAYLIST
 
         //InserÃ§Ã£o
-		long tmInicialAL = System.currentTimeMillis();
+		long tmInicialAL = System.nanoTime();
 		ArrayList<String> stArrayList = new ArrayList<String>();
         for(int x=0 ; x < arq.size(); x++){
             stArrayList.add(arq.get(x));
         }		
 
-		long tmFinalAL = System.currentTimeMillis();
-        time.add("Insercion time ArrayList : " + (tmFinalAL-tmInicialAL)+ " ms"); 
+		long tmFinalAL = System.nanoTime();
+        time.add("Insercion time ArrayList : " + (tmFinalAL-tmInicialAL)+ " ns"); 
 
         //Procura
-        long tmInicialALS = System.currentTimeMillis();
+        long tmInicialALS = System.nanoTime();
         for(int j = 0; j < words.length; j++){
             stArrayList.contains(words[j]);
         }
 
-        long tmFinalALS = System.currentTimeMillis();
-        time.add("Search time ArrayList : " + (tmFinalALS-tmInicialALS)+ " ms"); 
+        long tmFinalALS = System.nanoTime();
+        time.add("Search time ArrayList : " + (tmFinalALS-tmInicialALS)+ " ns"); 
 
         // Delete
-        long tmInicialALD = System.currentTimeMillis();
+        long tmInicialALD = System.nanoTime();
 
         for(int i = 0; i < words.length; i++){
             stArrayList.remove(words[i]);
             //System.out.println(stArrayList.contains(words[i]));
         }
 
-        long tmFinalALD = System.currentTimeMillis();
-        time.add("Delete time  ArrayList : " + (tmFinalALD-tmInicialALD) + " ms"); 
+        long tmFinalALD = System.nanoTime();
+        time.add("Delete time  ArrayList : " + (tmFinalALD-tmInicialALD) + " ns"); 
 
         return time;	
     }
@@ -96,34 +116,34 @@ public class Questao1{
 
         //LINKEDLIST
         //InserÃ§Ã£o
-		long tmInicialLL = System.currentTimeMillis();
+		long tmInicialLL = System.nanoTime();
 		LinkedList<String> stLinkedList = new LinkedList<String>(); 
         for(int x=0 ; x < arq.size(); x++){// elemento a ser comparado
          	stLinkedList.add(arq.get(x));
 		}		
 
-		long tmFinalLL = System.currentTimeMillis();
-        time.add("Insertion time LinkedList : " + (tmFinalLL-tmInicialLL)+ " ms"); 
+		long tmFinalLL = System.nanoTime();
+        time.add("Insertion time LinkedList : " + (tmFinalLL-tmInicialLL)+ " ns"); 
 
         //Procura
-        long tmInicialLLS = System.currentTimeMillis();
+        long tmInicialLLS = System.nanoTime();
         for(int j = 0; j < words.length; j++){
             stLinkedList.contains(words[j]);
         }
 
-        long tmFinalLLS = System.currentTimeMillis();
-        time.add("Search time LinkedList : " + (tmFinalLLS-tmInicialLLS)+ " ms"); 
+        long tmFinalLLS = System.nanoTime();
+        time.add("Search time LinkedList : " + (tmFinalLLS-tmInicialLLS)+ " ns"); 
         
         // Delete
-        long tmInicialLLD = System.currentTimeMillis();
+        long tmInicialLLD = System.nanoTime();
 
         for(int i = 0; i < words.length; i++){
             stLinkedList.remove(words[i]);
             //System.out.println(stLinkedList.contains(words[i]));
         }
 
-        long tmFinalLLD = System.currentTimeMillis();
-        time.add("Delete time LinkedList : " + (tmFinalLLD-tmInicialLLD) + " ms"); 
+        long tmFinalLLD = System.nanoTime();
+        time.add("Delete time LinkedList : " + (tmFinalLLD-tmInicialLLD) + " ns"); 
         return time;	
     }
 }

@@ -4,7 +4,27 @@ import java.util.LinkedHashSet;
 import java.util.TreeSet;
 import java.util.Vector;
 
-public class Questao2{
+/*
+    Classe Questao 02:
+    
+    RESPONSAVEL POR CONTER AS INTERFACES PARA HASHSET, LINKEDHASHSET e TREESET
+
+*/
+
+
+public class Questao2 {
+
+/* 
+    INPUT: RECEBE O NOME DO ARQUIVO
+
+    METODO RESPONSAVEL POR CALCULAR :
+    O TEMPO DE EXECU플O DA INSER플O DOS ELEMENTOS DO ARQUIVO NO VETOR;
+    O TEMPO DE EXECU플O PARA PROCURAR 10 ELEMENTOS NO VETOR;
+    O TEMPO DE EXECU플O PARA DELETAR 10 ELEMENTOS NO VETOR;
+
+    OUTPUT: RETORNA UM VETOR COM O TEMPO DAS EXECUCOES
+*/
+
   public Vector<String> timeHashSetST(String filename){
     Vector<String> arq = new Vector<String>();
     Vector<String> time = new Vector<String>();
@@ -12,33 +32,33 @@ public class Questao2{
     String[] words = {"Lisbon", "NASA", "Kyunghee","Konkuk", "Sogang", "momentarily", "rubella", "vaccinations", "government", "Authorities"};
     
     //inserir
-    long tmInicialHS = System.currentTimeMillis();
+    long tmInicialHS = System.nanoTime();
     HashSet<String> stHashSetST = new HashSet<String>(); 
     for(int x=0 ; x < arq.size(); x++){// elemento a ser comparado
       stHashSetST.add(arq.get(x));
     }		
-    long tmFinalHS = System.currentTimeMillis();
-    time.add("HashSet : " + (tmFinalHS-tmInicialHS));
+    long tmFinalHS = System.nanoTime();
+    time.add("Insertion HashSet : " + (tmFinalHS-tmInicialHS));
 
     // Procura
-    long tmInicialHSP = System.currentTimeMillis();
+    long tmInicialHSP = System.nanoTime();
     for(int i = 0; i < words.length; i++){
       stHashSetST.contains(words[i]);
     }
 
-    long tmFinalHSP = System.currentTimeMillis();
-    time.add("Search time HashSet : " + (tmFinalHSP-tmInicialHSP) + " ms");
+    long tmFinalHSP = System.nanoTime();
+    time.add("Search time HashSet : " + (tmFinalHSP-tmInicialHSP) + " ns");
 
     // Delete
     
-    long tmInicialHSPD = System.currentTimeMillis();
+    long tmInicialHSPD = System.nanoTime();
     for(int i = 0; i < words.length; i++){
       stHashSetST.remove(words[i]);
       //System.out.println(stHashSetST.contains(words[i]));
     }
 
-    long tmFinalHSPD = System.currentTimeMillis();
-    time.add("Delete time HashSet : " + (tmFinalHSPD-tmInicialHSPD) + " ms"); 
+    long tmFinalHSPD =System.nanoTime();
+    time.add("Delete time HashSet : " + (tmFinalHSPD-tmInicialHSPD) + " ns"); 
     
     return time;
   }
@@ -50,33 +70,33 @@ public class Questao2{
     String[] words = {"Lisbon", "NASA", "Kyunghee","Konkuk", "Sogang", "momentarily", "rubella", "vaccinations", "government", "Authorities"};
     
     //inserir
-    long tmInicialLHS = System.currentTimeMillis();
+    long tmInicialLHS = System.nanoTime();
     LinkedHashSet<String> stLinkedHashSetST = new LinkedHashSet<String>();
     for(int x=0 ; x < arq.size(); x++){// elemento a ser comparado
       stLinkedHashSetST.add(arq.get(x));
     }		
-    long tmFinalLHS = System.currentTimeMillis();
-    time.add("LinkedHashSet : " + (tmFinalLHS-tmInicialLHS));
+    long tmFinalLHS = System.nanoTime();
+    time.add("Insertion LinkedHashSet : " + (tmFinalLHS-tmInicialLHS));
 
     // Procura
-    long tmInicialLHSP = System.currentTimeMillis();
+    long tmInicialLHSP = System.nanoTime();
     for(int i = 0; i < words.length; i++){
       stLinkedHashSetST.contains(words[i]);
     }
 
-    long tmFinalLHSP = System.currentTimeMillis();
-    time.add("Search time LinkedHashSet : " + (tmFinalLHSP-tmInicialLHSP) + " ms");
+    long tmFinalLHSP = System.nanoTime();
+    time.add("Search time LinkedHashSet : " + (tmFinalLHSP-tmInicialLHSP) + " ns");
 
     // Delete
-    long tmInicialLHSD = System.currentTimeMillis();
+    long tmInicialLHSD = System.nanoTime();
 
     for(int i = 0; i < words.length; i++){
       stLinkedHashSetST.remove(words[i]);
       //System.out.println(stLinkedHashSetST.contains(words[i]));
     }
 
-    long tmFinalLHSD = System.currentTimeMillis();
-    time.add("Delete time LinkedHashSet : " + (tmFinalLHSD-tmInicialLHSD) + " ms"); 
+    long tmFinalLHSD = System.nanoTime();
+    time.add("Delete time LinkedHashSet : " + (tmFinalLHSD-tmInicialLHSD) + " ns"); 
 
     return time;
   }
@@ -88,33 +108,33 @@ public class Questao2{
     String[] words = {"Lisbon", "NASA", "Kyunghee","Konkuk", "Sogang", "momentarily", "rubella", "vaccinations", "government", "Authorities"};
       
     //inserir
-    long tmInicialTM = System.currentTimeMillis();
+    long tmInicialTM = System.nanoTime();
     TreeSet<String> stTreeSetST = new TreeSet<String>();
     for(int x=0 ; x < arq.size(); x++){// elemento a ser comparado
       stTreeSetST.add(arq.get(x));
     }		
-    long tmFinalTM = System.currentTimeMillis();
-    time.add("TreeSet : " + (tmFinalTM-tmInicialTM));
+    long tmFinalTM = System.nanoTime();
+    time.add("Insertion TreeSet : " + (tmFinalTM-tmInicialTM));
 
     // Procura
-    long tmInicialTMP = System.currentTimeMillis();
+    long tmInicialTMP = System.nanoTime();
     for(int i = 0; i < words.length; i++){
           stTreeSetST.contains(words[i]);
     }
 
-    long tmFinalTMP = System.currentTimeMillis();
-    time.add("Search time TreeSet : " + (tmFinalTMP-tmInicialTMP) + " ms");
+    long tmFinalTMP = System.nanoTime();
+    time.add("Search time TreeSet : " + (tmFinalTMP-tmInicialTMP) + " ns");
     
     // Delete
-    long tmInicialTSD = System.currentTimeMillis();
+    long tmInicialTSD = System.nanoTime();
 
     for(int i = 0; i < words.length; i++){
         stTreeSetST.remove(words[i]);
       // System.out.println(stTreeSetST.contains(words[i]));
     }
 
-    long tmFinalTSD = System.currentTimeMillis();
-    time.add("Delete time TreeSet : " + (tmFinalTSD-tmInicialTSD) + " ms"); 
+    long tmFinalTSD = System.nanoTime();
+    time.add("Delete time TreeSet : " + (tmFinalTSD-tmInicialTSD) + " ns"); 
 
     return time;
   }

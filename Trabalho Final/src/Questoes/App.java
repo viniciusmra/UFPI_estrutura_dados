@@ -3,10 +3,22 @@ package Questoes;
 import java.io.FileNotFoundException;
 import java.util.Vector;
 import java.util.Scanner;
+/*
+	Ellem Almeida	
+	Pedro Felipe
+    Vinicius Alves
+
+	DESCRIÇÃO: Esta atividade versa sobre a Java Collections API.
+	Collections em Java são usadas para armazenar grupos de objetos. A Collections API
+	fornece um número de interfaces (incluindo Collection, List, Map e Set) para definir
+	uma maneira padrão de usar uma faixa concreta de estrutura de dados. 
+
+*/
 
 public class App <Key, Value>{
 
     public static void main(String[] args) throws FileNotFoundException {
+		String filename = "src/Questoes/leipzig100kUnic.txt";
 		Scanner keyboard = new Scanner(System.in);
 		Integer key;
 		//Vector<String> arq = new Vector<String>();
@@ -35,7 +47,7 @@ public class App <Key, Value>{
 			System.out.println("[3] Tudo");
 			System.out.println("[4] Sair");
 			System.out.println("=-=-=-=-=-=-=-=-=-=");
-			System.out.print("Informe uma opção:");
+			System.out.print("Informe uma opção: ");
 			key = keyboard.nextInt();
 			//keyboard.next();
 			System.out.println("=-=-=-=-=-=-=-=-=-=");
@@ -46,13 +58,13 @@ public class App <Key, Value>{
 					System.out.println("Carregando...");
 					System.out.println("=-=-=-=-=-=-=-=-=-=");
 
-					metodosQ1.addAll(classeQ1.timeVectorST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
-					metodosQ1.addAll(classeQ1.timeArrayListST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
-					metodosQ1.addAll(classeQ1.timeLinkedListST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
+					metodosQ1.addAll(classeQ1.timeVectorST(filename));
+					metodosQ1.addAll(classeQ1.timeArrayListST(filename));
+					metodosQ1.addAll(classeQ1.timeLinkedListST(filename));
 			
-					for(int i=0; i<  metodosQ1.size(); i++){
+					for(int i = 0; i <  metodosQ1.size(); i++){
 						System.out.println(metodosQ1.get(i));
-						if(i%3==0){
+						if((i+1)%3 == 0 && (i+1 != metodosQ1.size())){
 							System.out.println("=-=-=-=-=-=-=-=-=-=");
 						}
 					}
@@ -63,13 +75,13 @@ public class App <Key, Value>{
 					System.out.println("Carregando...");
 					System.out.println("=-=-=-=-=-=-=-=-=-=");
 
-					metodosQ2.addAll(classeQ2.timeHashSetST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
-					metodosQ2.addAll(classeQ2.timeLinkedHashSetST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
-					metodosQ2.addAll(classeQ2.timeTreeSetST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
+					metodosQ2.addAll(classeQ2.timeHashSetST(filename));
+					metodosQ2.addAll(classeQ2.timeLinkedHashSetST(filename));
+					metodosQ2.addAll(classeQ2.timeTreeSetST(filename));
 
-					for(int i=0; i<  metodosQ2.size(); i++){
+					for(int i = 0; i <  metodosQ2.size(); i++){
 						System.out.println(metodosQ2.get(i));
-						if(i%3==0){
+						if((i+1)%3 == 0 && (i+1 != metodosQ2.size())){
 							System.out.println("=-=-=-=-=-=-=-=-=-=");
 						}
 					}
@@ -80,15 +92,16 @@ public class App <Key, Value>{
 					System.out.println("Carregando...");
 					System.out.println("=-=-=-=-=-=-=-=-=-=");
 
-					metodosQ3.addAll(classeQ3.timeTreeMapST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
-					metodosQ3.addAll(classeQ3.timeLinkedHashST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
-					metodosQ3.addAll(classeQ3.timeHashMapST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
+					metodosQ3.addAll(classeQ3.timeTreeMapST(filename));
+					metodosQ3.addAll(classeQ3.timeLinkedHashST(filename));
+					metodosQ3.addAll(classeQ3.timeHashMapST(filename));
 
 					for(int i=0; i<  metodosQ3.size(); i++){
 						System.out.println(metodosQ3.get(i));
-						if(i%3==0){
+						if((i+1)%3 == 0 && (i+1 != metodosQ3.size())){
 							System.out.println("=-=-=-=-=-=-=-=-=-=");
-						}					}
+						}	
+					}
 
 				break;
 
@@ -97,35 +110,35 @@ public class App <Key, Value>{
 					System.out.println("=-=-=-=-=-=-=-=-=-=");
 
 					
-					metodosQ1.addAll(classeQ1.timeVectorST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
-					metodosQ1.addAll(classeQ1.timeArrayListST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
-					metodosQ1.addAll(classeQ1.timeLinkedListST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
+					metodosQ1.addAll(classeQ1.timeVectorST(filename));
+					metodosQ1.addAll(classeQ1.timeArrayListST(filename));
+					metodosQ1.addAll(classeQ1.timeLinkedListST(filename));
 
-					metodosQ2.addAll(classeQ2.timeHashSetST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
-					metodosQ2.addAll(classeQ2.timeLinkedHashSetST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
-					metodosQ2.addAll(classeQ2.timeTreeSetST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));	
+					metodosQ2.addAll(classeQ2.timeHashSetST(filename));
+					metodosQ2.addAll(classeQ2.timeLinkedHashSetST(filename));
+					metodosQ2.addAll(classeQ2.timeTreeSetST(filename));	
 
-					metodosQ3.addAll(classeQ3.timeTreeMapST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
-					metodosQ3.addAll(classeQ3.timeLinkedHashST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
-					metodosQ3.addAll(classeQ3.timeHashMapST("Trabalho Final/src/Questoes/leipzig100kUnic.txt"));
+					metodosQ3.addAll(classeQ3.timeTreeMapST(filename));
+					metodosQ3.addAll(classeQ3.timeLinkedHashST(filename));
+					metodosQ3.addAll(classeQ3.timeHashMapST(filename));
 
 					for(int i=0; i<  metodosQ1.size(); i++){
 						System.out.println(metodosQ1.get(i));
-						if(i%3==0){
+						if((i+1)%3 == 0 && (i+1 != metodosQ1.size())){
 							System.out.println("=-=-=-=-=-=-=-=-=-=");
 						}
 					}
 					
 					for(int i=0; i<  metodosQ2.size(); i++){
 						System.out.println(metodosQ2.get(i));
-						if(i%3==0){
+						if((i+1)%3 == 0 && (i+1 != metodosQ2.size())){
 							System.out.println("=-=-=-=-=-=-=-=-=-=");
 						}
 					}
 					
 					for(int i=0; i<  metodosQ3.size(); i++){
 						System.out.println(metodosQ3.get(i));
-						if(i%3==0){
+						if((i+1)%3 == 0 && (i+1 != metodosQ3.size())){
 							System.out.println("=-=-=-=-=-=-=-=-=-=");
 						}
 					}
@@ -135,14 +148,15 @@ public class App <Key, Value>{
 				case 4:
 					System.out.println("Encerrando...");
 					flag=false;
-				break;
+					break;
 
 				default:
-					key = keyboard.nextInt();
-					keyboard.next();
+					System.out.println("Informe uma opcao valida");
+                   	//key = keyboard.nextInt();
+                    break;
 			}
 		}
-		System.out.println("=-=-=-=-=-=-=");
+		System.out.println("=-=-=-=-=-=-=-=-=-=");
 		keyboard.close();
      }
 
