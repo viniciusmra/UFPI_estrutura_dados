@@ -1,5 +1,5 @@
 # Estrutura de dados UFPI
- <p>Disciplina de estrutura de dados, ministrada no período 2021.2 (cursado no primeiro semestre de 2022) pelo professor Raimundo Moura. O repositório inclui as atividades realizadas na disciplina, incluindo as que foram realizadas em grupo.
+ <p>Disciplina de estrutura de dados do curso de Ciência da Computação, ministrada no período 2021.2 (cursado no primeiro semestre de 2022) pelo professor Raimundo Moura. O repositório inclui as atividades realizadas na disciplina, incluindo as que foram realizadas em grupo.
  
  Grupo: 
  - Ellem Almeida
